@@ -4,6 +4,8 @@
 
 Instead of raw text, you can choose different blocks (like heading, check box, emoji, etc.). When you end up writing some info, you can export it to a PNG file :floppy_disk:. Documents deletion and updating are also available.
 
+:fire: New functionality - templates
+
 [View the app](https://mindwritee.netlify.app/) :eyes:
 
 ⠀
