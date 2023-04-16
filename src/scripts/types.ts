@@ -20,3 +20,9 @@ export type Block = {
     checked : boolean
     state : string
 }
+
+
+export interface Template {
+    name : string,
+    content : Block[]
+}

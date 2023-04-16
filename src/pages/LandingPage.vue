@@ -32,14 +32,16 @@
 
 <script lang="ts" setup>
     import MainContainer from '@/components/MainContainer.vue'
-import router from '@/scripts/router';
-import { useDocumentsStore } from '@/stores/documents';
+    import templates from '@/scripts/templates'
+    import { useDocumentsStore } from '@/stores/documents';
 
     import { onMounted, ref } from 'vue'
     import { useI18n } from 'vue-i18n'
+    import { useRouter } from 'vue-router'
 
 
     const { t } = useI18n()
+    const router = useRouter()
     document.title = t('pageTitles.landingPage')
 
     const pageLoaded = ref(false)
@@ -59,7 +61,7 @@ import { useDocumentsStore } from '@/stores/documents';
 
     const { createNewDocument } = useDocumentsStore()
     function createDocument() {
-        router.push('/' + createNewDocument())
+        router.push('/' + createNewDocument(templates[0]))
     }
 </script>
 

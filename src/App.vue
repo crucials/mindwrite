@@ -6,7 +6,7 @@
 <script lang="ts" setup>
     import NavigationBar from '@/components/NavigationBar.vue'
 
-    import { useI18n } from 'vue-i18n'
+    import { recognizeLocale } from '@/scripts/utils'
 
 
     // Get color theme
@@ -18,18 +18,7 @@
         document.documentElement.classList.add('dark')
     }
 
-    const i18n = useI18n()
-    const languageFromLocalStorage = localStorage.getItem('language')
-    if(languageFromLocalStorage == null) {
-        const preferredLanguage = navigator.language
-        if(i18n.availableLocales.includes(preferredLanguage)) {
-            i18n.locale.value = preferredLanguage
-            localStorage.setItem('language', preferredLanguage)
-        }
-    }
-    else {
-        i18n.locale.value = languageFromLocalStorage
-    }
+    recognizeLocale()
 </script>
 
 <style>

@@ -69,10 +69,27 @@ export default {
 
         editInfoWindowHeading: 'Информация о документе',
         titleFieldLabel: 'Название',
-        mainColorSelectLabel: 'Основной цвет'
+        mainColorSelectLabel: 'Основной цвет',
+
+        chooseTemplateWindowHeading: 'Выберите шаблон',
+        createButtonText: 'Создать',
+        withoutTemplateText: 'Продолжить без шаблона'
     },
 
     documentPage: {
         blockChangeTip: 'Чтобы изменить блок, кликните ПКМ на линию'
+    },
+
+    templates: {
+        firstDocument: {
+            name: 'Стандартный',
+            heading: 'Заголовок',
+            simpleText: 'Напишите о чем-нибудь'
+        },
+
+        todoList: {
+            name: 'Список дел',
+            checkBoxText: 'Добавьте задание, которое вам нужно выполнить'
+        }
     }
 }

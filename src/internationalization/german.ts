@@ -69,10 +69,27 @@ export default {
 
         editInfoWindowHeading: 'Dokument info',
         titleFieldLabel: 'Titelleiste',
-        mainColorSelectLabel: 'Hauptfarbe'
+        mainColorSelectLabel: 'Hauptfarbe',
+
+        chooseTemplateWindowHeading: 'Wählen Sie eine Vorlage',
+        createButtonText: 'Erstellen',
+        withoutTemplateText: 'Ohne Vorlage fortfahren'
     },
 
     documentPage: {
         blockChangeTip: 'Um den Block zu ändern, klicken Sie mit der rechten Maustaste auf eine Zeile.'
+    },
+
+    templates: {
+        firstDocument: {
+            name: 'Standard',
+            heading: 'Überschrift',
+            simpleText: 'Schreibe über etwas'
+        },
+
+        todoList: {
+            name: 'Aufgabenliste',
+            checkBoxText: 'Fügen Sie Aufgaben hinzu, die Sie erledigen müssen'
+        }
     }
 }

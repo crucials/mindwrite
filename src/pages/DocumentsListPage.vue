@@ -1,6 +1,6 @@
 <template>
     <main-container class="py-12 px-16">
-        <button class="mb-5 w-fit" @click="createDocument">
+        <button class="mb-5 w-fit" @click="showChooseTemplatePopUp">
             <img src="@/assets/images/plus.svg" :alt="t('picturesAltTexts.plus')">
         </button>
 
@@ -42,12 +42,16 @@
                 </div>
             </pop-up-window>
         </teleport>
+
+        <choose-template-pop-up :opened="chooseTemplateWindowOpened"
+            @window-close="chooseTemplateWindowOpened = false"/>
     </main-container>
 </template>
 
 <script lang="ts" setup>
     import MainContainer from '@/components/MainContainer.vue'
     import DocumentCard from '@/components/document-list-page/DocumentCard.vue'
+    import ChooseTemplatePopUp from '@/components/document-list-page/ChooseTemplatePopUp.vue'
 
     import { useDocumentsStore } from '@/stores/documents'
     import { storeToRefs } from 'pinia'
@@ -62,15 +66,14 @@
     const { t } = useI18n()
     document.title = t('pageTitles.documentsListPage')
 
-    const documentsStore = useDocumentsStore()
-    const { documents } = storeToRefs(documentsStore)
-    const { createNewDocument } = documentsStore
+    const { documents } = storeToRefs(useDocumentsStore())
 
     if(documents.value.length == 0) {
         router.push('/product') 
     }
 
     const editWindowOpened = ref(false)
+    const chooseTemplateWindowOpened = ref(false)
     const documentToEdit = ref<NotesDocument>(documents.value[0])
     const availableColors : DropDownItem[] = [
         { translationKey: 'colors.green', value: 'green' },
@@ -83,8 +86,8 @@
     const colorSelectListKey = ref(1)
     
 
-    function createDocument() {
-        router.push('/' + createNewDocument())
+    function showChooseTemplatePopUp() {
+        chooseTemplateWindowOpened.value = true
     }
 
     function openEditWindow(newDocumentToEdit : NotesDocument) {

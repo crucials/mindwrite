@@ -69,10 +69,27 @@ export default {
 
         editInfoWindowHeading: 'Document info',
         titleFieldLabel: 'Title',
-        mainColorSelectLabel: 'Main color'
+        mainColorSelectLabel: 'Main color',
+
+        chooseTemplateWindowHeading: 'Choose a template',
+        createButtonText: 'Create',
+        withoutTemplateText: 'Continue without template'
     },
 
     documentPage: {
         blockChangeTip: 'To change the block, right click on the line'
+    },
+
+    templates: {
+        firstDocument: {
+            name: 'Standard',
+            heading: 'Heading',
+            simpleText: 'Write about something'
+        },
+
+        todoList: {
+            name: 'TODO list',
+            checkBoxText: 'Add tasks you need to make'
+        }
     }
 }

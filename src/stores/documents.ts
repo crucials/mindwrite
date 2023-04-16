@@ -1,5 +1,5 @@
 import mainColors from '@/scripts/main-colors'
-import type { NotesDocument } from '@/scripts/types'
+import type { Block, NotesDocument, Template } from '@/scripts/types'
 import { defineStore } from 'pinia'
 import { ref, watch } from 'vue'
 
@@ -15,15 +15,14 @@ export const useDocumentsStore = defineStore('documents', () => {
         localStorage.setItem('documents', JSON.stringify(documents.value))
     }, { deep: true })
 
-    function createNewDocument() : number {
-        const documentsValue = documents.value
-        const newDocumentId = documentsValue.length + 1
-        documentsValue.push({
-            id: newDocumentId,
-            title: 'Document ' + newDocumentId,
-            creationDate: new Date().toString(),
-            mainColor: getRandomMainColor(),
-            content: [
+    function createNewDocument(template? : Template) : number {
+        let newDocumentContent : Block[]
+
+        if(template) {
+            newDocumentContent = template.content
+        }
+        else {
+            newDocumentContent = [
                 {
                     id: 1,
                     blockName: 'simple-text',
@@ -32,6 +31,16 @@ export const useDocumentsStore = defineStore('documents', () => {
                     state: 'fire'
                 }
             ]
+        }
+
+        const documentsValue = documents.value
+        const newDocumentId = documentsValue.length + 1
+        documentsValue.push({
+            id: newDocumentId,
+            title: 'Document ' + newDocumentId,
+            creationDate: new Date().toString(),
+            mainColor: getRandomMainColor(),
+            content: newDocumentContent
         })
 
         return newDocumentId
