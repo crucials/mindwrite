@@ -8,8 +8,11 @@ import HeadingBlock from '@/components/document-page/HeadingBlock.vue'
 import CheckBoxBlock from '@/components/document-page/CheckBoxBlock.vue'
 import EmojiBlock from '@/components/document-page/EmojiBlock.vue'
 import HighlightedTextBlock from '@/components/document-page/HighlightedTextBlock.vue'
+import StrikethroughTextBlock from '@/components/document-page/StrikethroughTextBlock.vue'
 
 export default [
-    DropDownList, SelectList, SimpleButton, PopUpWindow, SimpleTextBlock, HeadingBlock, CheckBoxBlock,
-    EmojiBlock, HighlightedTextBlock
+    DropDownList, SelectList, SimpleButton, PopUpWindow, 
+
+    SimpleTextBlock, HeadingBlock, CheckBoxBlock, EmojiBlock, HighlightedTextBlock, 
+    StrikethroughTextBlock
 ]

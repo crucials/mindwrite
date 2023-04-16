@@ -43,7 +43,8 @@ export default {
         heading: 'Überschrift',
         checkBox: 'Kontrollkästchen',
         emoji: 'Emoji',
-        highlightedText: 'Hervorgehobener Text'
+        highlightedText: 'Hervorgehobener Text',
+        strikethroughText: 'durchgestrichener Text'
     },
 
     landingPage: {

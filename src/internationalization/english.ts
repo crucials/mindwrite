@@ -43,7 +43,8 @@ export default {
         heading: 'Heading',
         checkBox: 'Check box',
         emoji: 'Emoji',
-        highlightedText: 'Highlighted text'
+        highlightedText: 'Highlighted text',
+        strikethroughText: 'Strikethrough text'
     },
 
     landingPage: {

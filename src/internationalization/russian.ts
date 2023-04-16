@@ -43,7 +43,8 @@ export default {
         heading: 'Заголовок',
         checkBox: 'Флажок',
         emoji: 'Эмодзи',
-        highlightedText: 'Выделяющийся текст'
+        highlightedText: 'Выделяющийся текст',
+        strikethroughText: 'Зачеркнутый текст'
     },
 
     landingPage: {

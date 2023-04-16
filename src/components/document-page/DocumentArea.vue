@@ -10,8 +10,8 @@
             @block-state-update-queried="updateBlockState"
             class="mb-3 last:mb-0"/>
 
-        <div class="absolute w-40" :style="`left: ${blockDropDownPosition.x}px; top: ${blockDropDownPosition.y}px`">
-            <drop-down-list :opened="blockDropDownListOpened" :items="availableBlocks" :doOnClick="changeBlock"
+        <div class="absolute w-40 min-w-2" :style="`left: ${blockDropDownPosition.x}px; top: ${blockDropDownPosition.y}px`">
+            <drop-down-list :opened="blockDropDownListOpened" :items="blockDropdownItems" :doOnClick="changeBlock"
                 :class="{ 'pointer-events-none': !blockDropDownListOpened }"/>
         </div>
     </div>
@@ -22,6 +22,7 @@
     
     import { inject, ref, type Ref } from 'vue'
     import type { Block, DropDownItem, NotesDocument } from '@/scripts/types'
+    import blockDropdownItems from '@/scripts/block-dropdown-items'
 
 
     const document = inject('documentToEdit') as Ref<NotesDocument>
@@ -88,32 +89,6 @@
     const blockDropDownListOpened = ref(false)
     type Position = { x : number, y : number }
     const blockDropDownPosition = ref<Position>({ x: 0, y: 0 })
-    const availableBlocks : DropDownItem[] = [
-        {
-            translationKey: 'blockNames.simpleText',
-            value: 'simple-text'
-        },
-
-        {
-            translationKey: 'blockNames.heading',
-            value: 'heading'
-        },
-
-        {
-            translationKey: 'blockNames.checkBox',
-            value: 'check-box'
-        },
-
-        {
-            translationKey: 'blockNames.emoji',
-            value: 'emoji'
-        },
-
-        {
-            translationKey: 'blockNames.highlightedText',
-            value: 'highlighted-text'
-        }
-    ]
     const currentEditingBlock = ref<Block>()
 
     function showDropDownAtCursorPosition(event : MouseEvent, targetBlock : Block) {
