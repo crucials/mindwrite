@@ -33,7 +33,7 @@
 <style scoped>
     .drop-down-list {
         @apply transition-all duration-300 min-w-2 px-5 py-3 absolute -top-3 left-0 opacity-0 hover:cursor-default
-            z-10 pointer-events-none;
+            z-10 pointer-events-none lg:min-w-1 ;
         background: linear-gradient(180deg, rgba(248, 247, 247, 0.15) 10%, #F8F7F7 100%);
     }
 

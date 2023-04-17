@@ -28,11 +28,11 @@
 <style scoped>
     .pop-up-window {
         transition: background-color 0.3s, transform 0.63s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        @apply block fixed top-1/2 mx-auto rounded-lg py-6 px-9 bg-white dark:bg-neutral-900 w-1/3 min-w-3.5;
+        @apply block fixed top-1/2 mx-auto rounded-lg py-6 px-9 bg-white dark:bg-neutral-900 w-1/3 min-w-3;
     }
 
     .pop-up-window:not([open]) {
-        transform: translateY(calc(-58vh - 100%))
+        transform: translateY(calc(-60vh - 100%))
     }
 
     .pop-up-window[open] {

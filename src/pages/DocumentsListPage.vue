@@ -9,7 +9,7 @@
                 class="w-1/4 m:w-full max-w-lg" @edit-window-open="openEditWindow"/>
         </ul>
 
-        <teleport to="body">
+        <teleport to="#app">
             <pop-up-window :opened="editWindowOpened" @window-close="editWindowOpened = false" v-if="documentToEdit">
                 <h6 class="themeable font-normal text-center text-3xl text-black dark:text-white mb-8">
                     {{ t('documentsListPage.editInfoWindowHeading') }}

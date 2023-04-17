@@ -1,6 +1,6 @@
 <template>
     <nav class="themeable px-6 py-5 bg-white dark:bg-neutral-900 flex items-center gap-x-14 lg:justify-center 
-        lg:gap-x-8 lg:flex-wrap gap-y-6">
+        lg:gap-x-12 gap-y-6 lg:flex-wrap">
         <router-link to="/">
             <img src="@/assets/images/logo.svg" :alt="$t('picturesAltTexts.logo')">            
         </router-link>
@@ -9,12 +9,14 @@
             { translationKey: 'languages.english', value: 'en-US' },
             { translationKey: 'languages.russian', value: 'ru-RU' }, ]" 
             @item-chosen="changeLanguage" :initial-item-number="i18n.availableLocales.indexOf(i18n.locale.value)">
+
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect y="-0.000213623" width="28" height="28" rx="4" class="themeable fill-black dark:fill-white"/>
                 <path class="themeable stroke-white dark:stroke-black"
                     d="M14.913 19.0553H22.087M14.913 19.0553L13 23.4998M14.913 19.0553L17.7783 12.3987C18.0092 11.8623 18.1246 11.5941 18.2826 11.5093C18.4199 11.4357 18.5801 11.4357 18.7174 11.5093C18.8754 11.5941 18.9908 11.8623 19.2217 12.3987L22.087 19.0553M22.087 19.0553L24 23.4998M4 5.72201H10M10 5.72201H13.5M10 5.72201V3.49979M13.5 5.72201H16M13.5 5.72201C13.0039 9.00789 11.8526 11.9845 10.1656 14.4825M10.1656 14.4825C10.7627 14.991 11.3875 15.4162 12 15.722M10.1656 14.4825C8.81302 13.3307 7.60276 11.7516 7 10.1665M10.1656 14.4825C8.56086 16.8586 6.47143 18.8018 4 20.1665"
                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
+            
         </select-list>
 
         <select-list :items="[ { translationKey: 'themes.dark', value: 'dark' },

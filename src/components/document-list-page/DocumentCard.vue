@@ -1,14 +1,16 @@
 <template>
     <li class="document-card">
-        <header class="flex justify-between gap-x-3 items-center mb-5 flex-wrap gap-y-5">
+        <header class="flex justify-between gap-x-3 items-center mb-5 flex-wrap gap-y-5 lg:justify-start
+            lg:gap-x-5">
             <div class="w-20 h-20 rounded-2xl flex-shrink-0" 
                 :style="`background-color: ${mainColors[documentFromId?.mainColor || '#E47070']}`"></div>
             
-            <router-link :to="'/' + documentId" class="themeable text-xl text-black dark:text-white w-1/2 sm:w-fit">
+            <router-link :to="'/' + documentId" class="themeable text-xl text-black dark:text-white w-1/2 sm:w-fit
+                lg:w-fit">
                 {{ documentFromId?.title }}
             </router-link>
 
-            <div class="relative" @mouseenter="optionsDropDownListOpened = true" 
+            <div class="relative sm:w-full" @mouseenter="optionsDropDownListOpened = true" 
                 @mouseleave="optionsDropDownListOpened = false">
                 <svg width="36" height="40" viewBox="0 0 36 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
