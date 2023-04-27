@@ -55,9 +55,7 @@
 
 <script lang="ts" setup>
     import MainContainer from '@/components/MainContainer.vue'
-
     import { useI18n } from 'vue-i18n'
-
 
     const { t } = useI18n()
     document.title = t('pageTitles.notFoundPage')
