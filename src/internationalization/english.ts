@@ -60,6 +60,7 @@ export default {
 
     documentsListPage: {
         dateMessage: 'Created on:',
+        openButtonText: 'Open',
 
         options: {
             delete: 'Delete',

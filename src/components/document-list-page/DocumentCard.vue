@@ -34,7 +34,7 @@
 
         <router-link :to="'/' + documentId">
             <simple-button size="medium">
-                Open
+                {{ t('documentsListPage.openButtonText') }}
             </simple-button>
         </router-link>
     </li>
