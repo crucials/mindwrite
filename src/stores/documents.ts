@@ -1,5 +1,5 @@
-import mainColors from '@/scripts/main-colors'
 import type { Block, NotesDocument, Template } from '@/scripts/types'
+import { getRandomMainColor } from '@/scripts/utils'
 import { defineStore } from 'pinia'
 import { ref, watch } from 'vue'
 
@@ -44,12 +44,6 @@ export const useDocumentsStore = defineStore('documents', () => {
         })
 
         return newDocumentId
-    }
-
-    function getRandomMainColor() : string {
-        const keys = Object.keys(mainColors)
-        const randomIndex = Math.floor(keys.length * Math.random())
-        return keys[randomIndex]
     }
 
     return { documents, createNewDocument }

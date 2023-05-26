@@ -18,7 +18,7 @@
                             class="themeable fill-black dark:fill-white" />
                 </svg>
 
-                <drop-down-list :items="options" :opened="optionsDropDownListOpened" class="w-44 break-words"
+                <drop-down-list :items="options" :opened="optionsDropDownListOpened" class="w-52 break-words"
                     :doOnClick="doOptionAction"/>
             </div>
         </header>
@@ -74,8 +74,8 @@
         },
 
         {
-            translationKey: 'documentsListPage.options.export',
-            value: 'export'
+            translationKey: 'documentsListPage.options.downloadScreenshot',
+            value: 'downloadScreenshot'
         }
     ]
 
@@ -93,8 +93,8 @@
                 emit('edit-window-open', documentFromId)
             }
         }
-        else if(value == 'export') {
-            router.push(`/${props.documentId}?export=true`)
+        else if(value == 'downloadScreenshot') {
+            router.push(`/${props.documentId}?downloadScreenshot=true`)
         }
 
         optionsDropDownListOpened.value = false

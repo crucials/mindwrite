@@ -29,6 +29,9 @@ export default {
         documentIcon: 'Document icon',
         plus: 'Plus icon',
 
+        import: 'Arrow points on rectangle',
+        export: 'Right top arrow from rectangle',
+
         emojis: {
             beach: 'Umbrella on the beach',
             rocket: 'Rocket',
@@ -61,11 +64,13 @@ export default {
     documentsListPage: {
         dateMessage: 'Created on:',
         openButtonText: 'Open',
+        importButtonText: 'Import',
+        exportButtonText: 'Export',
 
         options: {
             delete: 'Delete',
             update: 'Update info',
-            export: 'Export'
+            downloadScreenshot: 'Download screenshot'
         },
 
         editInfoWindowHeading: 'Document info',

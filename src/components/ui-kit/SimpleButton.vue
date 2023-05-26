@@ -1,7 +1,7 @@
 <template>
-    <button class="simple-button" :class="size">
+    <component :is="tagName || 'button'" class="simple-button" :class="size">
         <slot></slot>
-    </button>
+    </component>
 </template>
 
 <script lang="ts" setup>
@@ -13,6 +13,10 @@
         size: {
             type: String as PropType<Size>,
             default: 'medium'
+        },
+
+        tagName: {
+            type: String as PropType<string>
         }
     })
 </script>
@@ -20,7 +24,7 @@
 <style>
     .simple-button {
         @apply bg-main rounded-lg text-white transition-all duration-300 hover:shadow-xl hover:shadow-main/40
-            dark:hover:shadow-main/20 font-semibold active:scale-105;
+            dark:hover:shadow-main/20 font-semibold active:scale-105 hover:cursor-pointer;
     }
 
     .medium {

@@ -29,6 +29,9 @@ export default {
         documentIcon: 'Иконка документа',
         plus: 'Плюс',
 
+        import: 'Стрелка, указывающая на прямоугольник',
+        export: 'Стрелка вправо вверх, исходящая из прямоугольника',
+
         emojis: {
             beach: 'Зонтик на пляже',
             rocket: 'Ракета',
@@ -61,11 +64,13 @@ export default {
     documentsListPage: {
         dateMessage: 'Создано:',
         openButtonText: 'Открыть',
+        importButtonText: 'Загрузить',
+        exportButtonText: 'Выгрузить',
 
         options: {
             delete: 'Удалить',
             update: 'Обновить информацию',
-            export: 'Экспортировать'
+            downloadScreenshot: 'Скачать скриншот'
         },
 
         editInfoWindowHeading: 'Информация о документе',

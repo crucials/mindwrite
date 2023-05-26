@@ -1,8 +1,19 @@
 <template>
-    <main-container class="py-12 px-16">
-        <button class="mb-5 w-fit" @click="showChooseTemplatePopUp">
-            <img src="@/assets/images/plus.svg" :alt="t('picturesAltTexts.plus')">
-        </button>
+    <main-container class="py-12 px-16 m:p-8">
+        <div class="flex gap-7 items-center mb-5 sm:flex-wrap">
+            <button class="w-fit flex-shrink-0 sm:w-full text-center" @click="showChooseTemplatePopUp">
+                <img src="@/assets/images/plus.svg" :alt="t('picturesAltTexts.plus')">
+            </button>
+
+            <import-documents-button>
+
+            </import-documents-button>
+
+            <simple-button size="medium" class="flex items-center gap-x-3 justify-center" @click="exportDocuments">
+                <img src="@/assets/images/export.svg" :alt="t('picturesAltTexts.export')">
+                {{ t('documentsListPage.exportButtonText') }}
+            </simple-button>
+        </div>
 
         <ul class="flex justify-center gap-x-24 gap-y-12 flex-wrap">
             <document-card v-for="document in documents" :key="document.id" :document-id="document.id"
@@ -52,6 +63,7 @@
     import MainContainer from '@/components/MainContainer.vue'
     import DocumentCard from '@/components/document-list-page/DocumentCard.vue'
     import ChooseTemplatePopUp from '@/components/document-list-page/ChooseTemplatePopUp.vue'
+    import ImportDocumentsButton from '@/components/document-list-page/ImportDocumentsButton.vue'
 
     import { useDocumentsStore } from '@/stores/documents'
     import { storeToRefs } from 'pinia'
@@ -60,6 +72,7 @@
     import { computed, ref } from 'vue'
     import type { DropDownItem, NotesDocument } from '@/scripts/types'
     import mainColors from '@/scripts/main-colors'
+    import { saveAs } from 'file-saver'
 
 
     const router = useRouter()
@@ -94,6 +107,14 @@
         documentToEdit.value = newDocumentToEdit
         colorSelectListKey.value++
         editWindowOpened.value = true
+    }
+
+    function importDocuments() {
+
+    }
+
+    function exportDocuments() {
+        saveAs(new Blob([ JSON.stringify(documents.value) ], { type: 'application/json' }), 'mindwrite-documents.json')
     }
 </script>
 

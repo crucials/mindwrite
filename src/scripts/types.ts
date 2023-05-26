@@ -13,6 +13,14 @@ export interface NotesDocument {
     content : Block[]
 }
 
+export type ImportedDocument = {
+    id? : number,
+    title? : string,
+    mainColor? : string,
+    creationDate? : string
+    content? : Partial<Block>[]
+}
+
 export type Block = {
     id : number
     blockName : string,

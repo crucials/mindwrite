@@ -41,7 +41,7 @@
     import MainContainer from '@/components/MainContainer.vue'
     import DocumentArea from '@/components/document-page/DocumentArea.vue'
 
-    import type { NotesDocument}  from '@/scripts/types'
+    import type { NotesDocument }  from '@/scripts/types'
     import { onMounted, provide, ref } from 'vue'
     import { useI18n } from 'vue-i18n'
     import { useDocumentsStore } from '@/stores/documents'
@@ -71,9 +71,9 @@
         if (foundDocument) {
             documentToEdit.value = foundDocument
 
-            if(route.query.export == 'true') {
+            if(route.query.downloadScreenshot == 'true') {
                 onMounted(() => {
-                    exportDocument()
+                    downloadScreenshot()
                 })
             }
 
@@ -86,7 +86,7 @@
         router.push('/product')
     }
 
-    function exportDocument() {
+    function downloadScreenshot() {
         const documentAreaElement = document.querySelector('#documentArea') as HTMLElement
 
         toBlob(documentAreaElement).then((blob) => {

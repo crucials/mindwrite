@@ -29,6 +29,9 @@ export default {
         documentIcon: 'Dokumentensymbol',
         plus: 'Plus Symbol',
 
+        import: 'Pfeilspitzen auf abgerundetem Rechteck',
+        export: 'Pfeil rechts oben aus abgerundetem Rechteck',
+
         emojis: {
             beach: 'Regenschirm am Strand',
             rocket: 'Rakete',
@@ -61,11 +64,13 @@ export default {
     documentsListPage: {
         dateMessage: 'Erstellt am:',
         openButtonText: 'Öffnen',
+        importButtonText: 'Importieren',
+        exportButtonText: 'Export',
 
         options: {
             delete: 'Löschen',
             update: 'Aktualisie informationen',
-            export: 'Export'
+            downloadScreenshot: 'Screenshot herunterladen'
         },
 
         editInfoWindowHeading: 'Dokument info',
