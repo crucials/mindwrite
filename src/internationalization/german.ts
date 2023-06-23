@@ -47,7 +47,7 @@ export default {
         checkBox: 'Kontrollkästchen',
         emoji: 'Emoji',
         highlightedText: 'Hervorgehobener Text',
-        strikethroughText: 'durchgestrichener Text'
+        strikethroughText: 'Durchgestrichener Text'
     },
 
     landingPage: {
