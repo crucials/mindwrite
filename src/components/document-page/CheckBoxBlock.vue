@@ -29,7 +29,7 @@
     const checkBoxContainer = ref<HTMLDivElement>()
     useBlockMutationObserver(checkBoxContainer, emit)
 
-    function updateCheckBoxValue(event : Event) {     
+    function updateCheckBoxValue(event : Event) {
         emit('update:checked', (event.target as HTMLInputElement).checked)
     }
 </script>

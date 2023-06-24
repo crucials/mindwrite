@@ -22,7 +22,7 @@
 </script>
 
 <style>
-    .simple-button {
+    .simple-button, .simple-button[type="submit"] {
         @apply bg-main rounded-lg text-white transition-all duration-300 hover:shadow-xl hover:shadow-main/40
             dark:hover:shadow-main/20 font-semibold active:scale-105 hover:cursor-pointer;
     }

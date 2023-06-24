@@ -1,7 +1,7 @@
 <template>
     <div class="flex items-center gap-x-2 relative" ref="emojiBlockContainer">
         <button class="emoji-button" @click="emojiMenuOpened = !emojiMenuOpened">
-            <img :src="'emojis/' + emojiName + '.svg'" :alt="t('picturesAltTexts.emojis.' + emojiName)" class="w-5 h-5">
+            <img :src="'emojis/' + state + '.svg'" :alt="t('picturesAltTexts.emojis.' + state)" class="w-5 h-5">
         </button>
 
         <span class="themeable text-lg text-black dark:text-white">
@@ -28,7 +28,7 @@
     import { useI18n } from 'vue-i18n'
 
     defineProps({
-        emojiName: {
+        state: {
             type: String as PropType<string>,
             required: true
         }

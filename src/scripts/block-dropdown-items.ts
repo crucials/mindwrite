@@ -29,5 +29,10 @@ export default<DropDownItem[]> [
     {
         translationKey: 'blockNames.strikethroughText',
         value: 'strikethrough-text'
+    },
+
+    {
+        translationKey: 'blockNames.link',
+        value: 'link'
     }
 ]

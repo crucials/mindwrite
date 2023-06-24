@@ -8,8 +8,11 @@
     import NavigationBar from '@/components/NavigationBar.vue'
 
     import { recognizeLocale } from '@/scripts/utils'
+    import { useRoute } from 'vue-router'
 
 
+    const route = useRoute()
+    
     // Get color theme
     if (localStorage.getItem('dark-theme') == null) {
         const darkThemeEnabled = window.matchMedia('(prefers-color-scheme: dark)').matches

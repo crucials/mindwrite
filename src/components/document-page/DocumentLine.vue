@@ -2,7 +2,7 @@
     <div>
         <component contenteditable :is="block.blockName + '-block'" @keydown="checkForNewLineQuery"
             class="min-h-[20px] focus:outline-none" @input="queryBlockTextUpdate" :id="'block' + block.id"
-            v-model:checked="block.checked" :emojiName="block.state" spellcheck="false"
+            v-model:checked="block.checked" :state="block.state" spellcheck="false"
             @block-name-update-queried="(newName : string) => emit('block-name-update-queried', newName, block.id)"
             @block-state-update-queried="(newState : string) => emit('block-state-update-queried', newState, block.id)">
             {{ blockInitialText }}
@@ -14,7 +14,6 @@
     import type { Block } from '@/scripts/types'
     import { onBeforeUpdate, onMounted, toRefs, watch, type PropType } from 'vue'
     import VanillaCaret from 'vanilla-caret-js'
-
 
     const props = defineProps({
         block: {

@@ -78,7 +78,14 @@ module.exports = {
       },
 
       colors: {
-        'main': '#4D94F8'
+        'main': '#4D94F8',
+        'neutral': {
+          '150': 'hsl(0, 0%, 94%)'
+        }
+      },
+
+      backgroundImage: {
+        'sky-gradient': 'linear-gradient(90deg, #4D94F8 62.25%, #4D94F830 78.78%, #FFFFFF00 87.33%)'
       }
     },
   },

@@ -28,6 +28,9 @@ export default {
         leftBlueArrow: 'Left blue arrow icon',
         documentIcon: 'Document icon',
         plus: 'Plus icon',
+        link: 'Paper clip, link icon',
+        sliderLeftArrow: 'Left arrow, go back button',
+        sliderRightArrow: 'Right arrow, go forward button',
 
         import: 'Arrow points on rectangle',
         export: 'Right top arrow from rectangle',
@@ -47,7 +50,8 @@ export default {
         checkBox: 'Check box',
         emoji: 'Emoji',
         highlightedText: 'Highlighted text',
-        strikethroughText: 'Strikethrough text'
+        strikethroughText: 'Strikethrough text',
+        link: 'Link'
     },
 
     landingPage: {
@@ -83,7 +87,11 @@ export default {
     },
 
     documentPage: {
-        blockChangeTip: 'To change the block, right click on the line'
+        blockChangeTip: 'To change the block, right click on the line',
+        linkPopUp: {
+            heading: 'Enter the URL for link',
+            selectDocumentText: 'or choose a document to navigate to:'
+        }
     },
 
     templates: {

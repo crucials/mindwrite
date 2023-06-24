@@ -22,18 +22,16 @@
 
         <teleport to="#app">
             <pop-up-window :opened="editWindowOpened" @window-close="editWindowOpened = false" v-if="documentToEdit">
-                <h6 class="themeable font-normal text-center text-3xl text-black dark:text-white mb-8">
+                <h2 class="themeable font-normal text-center text-3xl text-black dark:text-white mb-8">
                     {{ t('documentsListPage.editInfoWindowHeading') }}
-                </h6>
+                </h2>
 
                 <label class="block mb-9">
                     <span class="themeable text-lg text-black dark:text-white block mb-2">
                         {{ t('documentsListPage.titleFieldLabel') }}
                     </span>
 
-                    <input type="text" class="themeable w-2/3 bg-neutral-200 dark:bg-neutral-800 
-                        focus:outline-none transition-all duration-300 focus:border focus:border-main
-                        rounded-lg px-5 py-2 text-black dark:text-white" v-model="documentToEdit.title">
+                    <text-field v-model="documentToEdit.title"/>
                 </label>
 
                 <div>

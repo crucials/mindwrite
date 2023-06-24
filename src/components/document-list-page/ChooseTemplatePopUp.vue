@@ -1,9 +1,9 @@
 <template>
     <teleport to="#app">
         <pop-up-window :opened="opened" @window-close="$emit('window-close')">
-            <h6 class="themeable font-normal text-center text-3xl text-black dark:text-white mb-7">
+            <h2 class="themeable font-normal text-center text-3xl text-black dark:text-white mb-7">
                 {{ t('documentsListPage.chooseTemplateWindowHeading') }}
-            </h6>
+            </h2>
 
             <select-list :items="templateSelectItems" class="w-fit mx-auto mb-9"
                 @item-chosen="chooseTemplate"/>

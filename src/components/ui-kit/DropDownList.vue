@@ -43,12 +43,8 @@
 
     .drop-down-item {
         @apply text-black dark:text-white text-base after:w-full after:scale-x-0 after:h-px after:origin-center
-                after:transition-transform after:duration-300 hover:after:scale-x-100 after:block
+                after:transition-transform after:duration-300 hover:after:scale-x-100 after:block after:bg-sky-gradient
                 hover:cursor-pointer pointer-events-none;
-    }
-
-    .drop-down-item::after {
-        background: linear-gradient(90deg, #4D94F8 62.25%, #4D94F830 78.78%, #FFFFFF00 87.33%);
     }
 
     .drop-down-list-opened {

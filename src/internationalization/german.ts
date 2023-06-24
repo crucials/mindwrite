@@ -28,6 +28,7 @@ export default {
         leftBlueArrow: 'Linkes blaues Pfeilsymbol',
         documentIcon: 'Dokumentensymbol',
         plus: 'Plus Symbol',
+        link: 'Büroklammer, Link-Symbol',
 
         import: 'Pfeilspitzen auf abgerundetem Rechteck',
         export: 'Pfeil rechts oben aus abgerundetem Rechteck',
@@ -47,7 +48,8 @@ export default {
         checkBox: 'Kontrollkästchen',
         emoji: 'Emoji',
         highlightedText: 'Hervorgehobener Text',
-        strikethroughText: 'Durchgestrichener Text'
+        strikethroughText: 'Durchgestrichener Text',
+        link: 'Der Link'
     },
 
     landingPage: {
@@ -83,7 +85,11 @@ export default {
     },
 
     documentPage: {
-        blockChangeTip: 'Um den Block zu ändern, klicken Sie mit der rechten Maustaste auf eine Zeile.'
+        blockChangeTip: 'Um den Block zu ändern, klicken Sie mit der rechten Maustaste auf eine Zeile.',
+        linkPopUp: {
+            heading: 'Geben Sie die URL für den Link ein',
+            selectDocumentText: 'oder wählen Sie ein Dokument aus:'
+        }
     },
 
     templates: {

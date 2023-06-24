@@ -28,6 +28,9 @@ export default {
         leftBlueArrow: 'Синяя стрелка налево',
         documentIcon: 'Иконка документа',
         plus: 'Плюс',
+        link: 'Скрепка, иконка ссылки',
+        sliderLeftArrow: 'Стрелка влево, кнопка \'Назад\'',
+        sliderRightArrow: 'Стрелка вправо, кнопка \'Вперед\'',
 
         import: 'Стрелка, указывающая на прямоугольник',
         export: 'Стрелка вправо вверх, исходящая из прямоугольника',
@@ -47,7 +50,8 @@ export default {
         checkBox: 'Флажок',
         emoji: 'Эмодзи',
         highlightedText: 'Выделяющийся текст',
-        strikethroughText: 'Зачеркнутый текст'
+        strikethroughText: 'Зачеркнутый текст',
+        link: 'Ссылка'
     },
 
     landingPage: {
@@ -83,7 +87,11 @@ export default {
     },
 
     documentPage: {
-        blockChangeTip: 'Чтобы изменить блок, кликните ПКМ на линию'
+        blockChangeTip: 'Чтобы изменить блок, кликните ПКМ на линию',
+        linkPopUp: {
+            heading: 'Введите URL для ссылки',
+            selectDocumentText: 'или выберите документ:'
+        }
     },
 
     templates: {

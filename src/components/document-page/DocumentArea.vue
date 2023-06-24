@@ -1,32 +1,45 @@
 <template>
     <div class="themeable w-[87%] bg-white dark:bg-neutral-900 border border-neutral-300
-        dark:border-neutral-700 p-5 rounded-lg" @click="closeDropDown">
+        dark:border-neutral-700 p-5 rounded-lg flex flex-col gap-y-3" @click="closeDropDown">
         <document-line v-for="block in document.content" :key="block.id" :block="block" 
             @new-line-queried="createNewLine" @block-text-update-queried="updateBlockText"
             @line-deletion-queried="deleteLine" :focused-block-id="focusedBlockId"
             @next-line-focus-queried="focusOnNextLine" @previous-line-focus-queried="focusOnPreviousLine"
             @click.right="(event : MouseEvent) => showDropDownAtCursorPosition(event, block)"
             @block-name-update-queried="updateBlockName"
-            @block-state-update-queried="updateBlockState"
-            class="mb-3 last:mb-0"/>
+            @block-state-update-queried="updateBlockState"/>
 
         <div class="absolute w-40 min-w-2" :style="`left: ${blockDropDownPosition.x}px; top: ${blockDropDownPosition.y}px`">
             <drop-down-list :opened="blockDropDownListOpened" :items="blockDropdownItems" :doOnClick="changeBlock"
                 :class="{ 'pointer-events-none': !blockDropDownListOpened }"/>
         </div>
+
+        <link-pop-up :visible="linkPopUpVisible" :target-link="targetLinkBlock" 
+            @window-close="linkPopUpVisible = false"/>
     </div>
 </template>
 
 <script lang="ts" setup>
     import DocumentLine from './DocumentLine.vue'
+    import LinkPopUp from './LinkPopUp.vue'
     
     import { inject, ref, type Ref } from 'vue'
     import type { Block, DropDownItem, NotesDocument } from '@/scripts/types'
     import blockDropdownItems from '@/scripts/block-dropdown-items'
+    import useLinkPopUp from '@/composables/link-pop-up'
 
+
+    type Position = { x : number, y : number }
 
     const document = inject('documentToEdit') as Ref<NotesDocument>
     const focusedBlockId = ref(1)
+
+    const { linkPopUpVisible } = useLinkPopUp()
+    const targetLinkBlock = ref<Block>()
+
+    const blockDropDownListOpened = ref(false)
+    const blockDropDownPosition = ref<Position>({ x: 0, y: 0 })
+    const currentEditingBlock = ref<Block>()
     
     function createNewLine(currentBlock : Block) {
         const documentContent = document.value.content
@@ -35,7 +48,7 @@
             blockName: 'simple-text',
             text: '',
             checked: false,
-            state: 'fire'
+            state: ''
         }
 
         documentContent.splice(documentContent.indexOf(currentBlock) + 1, 0, newBlock)
@@ -86,11 +99,6 @@
         }
     }
 
-    const blockDropDownListOpened = ref(false)
-    type Position = { x : number, y : number }
-    const blockDropDownPosition = ref<Position>({ x: 0, y: 0 })
-    const currentEditingBlock = ref<Block>()
-
     function showDropDownAtCursorPosition(event : MouseEvent, targetBlock : Block) {
         event.preventDefault()    
         currentEditingBlock.value = targetBlock   
@@ -111,6 +119,14 @@
 
     function changeBlock(newBlockNameItem : DropDownItem) {
         if(currentEditingBlock.value) {
+            if(newBlockNameItem.value === 'emoji') {
+                currentEditingBlock.value.state = 'fire'
+            }
+            else if(newBlockNameItem.value === 'link') {
+                targetLinkBlock.value = currentEditingBlock.value
+                linkPopUpVisible.value = true
+            }
+
             currentEditingBlock.value.blockName = newBlockNameItem.value
         }
     }
