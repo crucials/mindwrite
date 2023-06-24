@@ -1,18 +1,18 @@
 <template>
     <main-container class="overflow-hidden items-center justify-center p-5">
-        <img src="@/assets/images/document.svg" :alt="$t('picturesAltTexts.documentIcon')" 
+        <img src="@/assets/images/blue-document.svg" :alt="$t('picturesAltTexts.documentIcon')" 
             class="document-icon large-document-icon bottom-12 left-12" 
             :style="`transform: translateX(${mouseXPosition / 4}px) translateY(${mouseYPosition / 4}px);`">
-        <img src="@/assets/images/document.svg" :alt="$t('picturesAltTexts.documentIcon')" 
+        <img src="@/assets/images/blue-document.svg" :alt="$t('picturesAltTexts.documentIcon')" 
             class="document-icon medium-document-icon top-12 right-24" 
             :style="`transform: translateX(${mouseXPosition / 2}px) translateY(${mouseYPosition / 2}px) rotate(12deg);`">
-        <img src="@/assets/images/document.svg" :alt="$t('picturesAltTexts.documentIcon')" 
+        <img src="@/assets/images/blue-document.svg" :alt="$t('picturesAltTexts.documentIcon')" 
             class="document-icon medium-document-icon top-72 right-6" 
             :style="`transform: translateX(${mouseXPosition / 2}px) translateY(${mouseYPosition / 2}px) rotate(6deg);`">
-        <img src="@/assets/images/document.svg" :alt="$t('picturesAltTexts.documentIcon')" 
+        <img src="@/assets/images/blue-document.svg" :alt="$t('picturesAltTexts.documentIcon')" 
             class="document-icon small-document-icon top-24 left-60" 
             :style="`transform: translateX(${mouseXPosition}px) translateY(${mouseYPosition}px);`">
-        <img src="@/assets/images/document.svg" :alt="$t('picturesAltTexts.documentIcon')" 
+        <img src="@/assets/images/blue-document.svg" :alt="$t('picturesAltTexts.documentIcon')" 
             class="document-icon small-document-icon top-44 left-20" 
             :style="`transform: translateX(${mouseXPosition}px) translateY(${mouseYPosition}px) rotate(-6deg);`">
 
