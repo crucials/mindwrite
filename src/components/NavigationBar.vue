@@ -58,7 +58,6 @@
     const darkThemeEnabled = localStorage.getItem('dark-theme')
 
     const i18n = useI18n()
-    console.log(i18n.availableLocales)
     function changeLanguage(languageSelectItem : DropDownItem) {
         i18n.locale.value = languageSelectItem.value
         localStorage.setItem('language', languageSelectItem.value)
