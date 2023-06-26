@@ -73,7 +73,7 @@
     watch(() => props.targetLink, () => {
         const linkUrl = props.targetLink?.state
 
-        if(linkUrl) {
+        if(linkUrl !== undefined) {
             enteredUrl.value = linkUrl
         }
     })
