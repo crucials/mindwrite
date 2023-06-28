@@ -54,6 +54,7 @@
     .drop-down-list-opened .drop-down-item {
         animation: pointer-events-delay 0.1s;
         animation-fill-mode: both;
+        user-select: none
     }
 
     @keyframes pointer-events-delay {

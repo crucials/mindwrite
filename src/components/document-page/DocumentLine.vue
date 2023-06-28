@@ -4,7 +4,9 @@
             class="min-h-[20px] focus:outline-none" @input="queryBlockTextUpdate" :id="'block' + block.id"
             v-model:checked="block.checked" :state="block.state" spellcheck="false"
             @block-name-update-queried="(newName : string) => emit('block-name-update-queried', newName, block.id)"
-            @block-state-update-queried="(newState : string) => emit('block-state-update-queried', newState, block.id)">
+            @block-state-update-queried="(newState : string) => emit('block-state-update-queried', newState, block.id)"
+            @touchstart="startHolding"
+            @touchend="stopHolding">
             {{ blockInitialText }}
         </component>
     </div>
@@ -28,6 +30,8 @@
     })
     const { block } = toRefs(props)
     let blockInitialText = block.value.text
+
+    let timeoutAfterTouchId = 0
     
 
     function toggleFocus() {
@@ -61,7 +65,8 @@
         (event : 'new-line-queried' | 'line-deletion-queried', currentBlock : Block) : void,
         (event : 'next-line-focus-queried' | 'previous-line-focus-queried', currentBlock : Block) : void,
         (event : 'block-name-update-queried', newName : string, blockToUpdateId : number) : void,
-        (event : 'block-state-update-queried', newState : string, blockToUpdateId : number) : void
+        (event : 'block-state-update-queried', newState : string, blockToUpdateId : number) : void,
+        (event : 'touch-hold', touchEvent : TouchEvent) : void
     }>()
 
     function checkForNewLineQuery(event : KeyboardEvent) {      
@@ -97,6 +102,16 @@
         if(blockText) {
             emit('block-text-update-queried', blockText, block.value.id)
         }
+    }
+
+    function startHolding(event : TouchEvent) {
+        timeoutAfterTouchId = window.setTimeout(() => {
+            emit('touch-hold', event)
+        }, 500)
+    }
+
+    function stopHolding(event : TouchEvent) {
+        window.clearTimeout(timeoutAfterTouchId)
     }
 </script>
 

@@ -6,6 +6,7 @@
             @line-deletion-queried="deleteLine" :focused-block-id="focusedBlockId"
             @next-line-focus-queried="focusOnNextLine" @previous-line-focus-queried="focusOnPreviousLine"
             @click.right="(event : MouseEvent) => showDropDownAtCursorPosition(event, block)"
+            @touch-hold="(touchEvent : TouchEvent) => showDropDownAtTouchPosition(touchEvent, block)"
             @block-name-update-queried="updateBlockName"
             @block-state-update-queried="updateBlockState"/>
 
@@ -106,6 +107,11 @@
         showDropDown({ x: event.x, y: event.y - 63 })
     }
 
+    function showDropDownAtTouchPosition(touchEvent : TouchEvent, targetBlock : Block) {
+        currentEditingBlock.value = targetBlock
+        showDropDown({ x: touchEvent.touches[0].clientX, y: touchEvent.touches[0].clientY - 140 })
+    }
+ 
     function showDropDown(position : Position) {
         blockDropDownPosition.value = position
         blockDropDownListOpened.value = true
@@ -130,6 +136,7 @@
             currentEditingBlock.value.blockName = newBlockNameItem.value
         }
     }
+    function d() { console.log('Tou') }
 </script>
 
 <style>
