@@ -29,6 +29,8 @@ export default {
         documentIcon: 'Dokumentensymbol',
         plus: 'Plus Symbol',
         link: 'Büroklammer, Link-Symbol',
+        sliderLeftArrow: 'Pfeil nach links, Zurück-Taste',
+        sliderRightArrow: 'Pfeil nach rechts, Vorwärts-Taste',
 
         import: 'Pfeilspitzen auf abgerundetem Rechteck',
         export: 'Pfeil rechts oben aus abgerundetem Rechteck',
@@ -85,7 +87,7 @@ export default {
     },
 
     documentPage: {
-        blockChangeTip: 'Um den Block zu ändern, klicken Sie mit der rechten Maustaste auf eine Zeile.',
+        blockChangeTip: 'Um den Block zu ändern, klicken Sie auf die Linie oder drücken Sie auf das Telefon',
         linkPopUp: {
             heading: 'Geben Sie die URL für den Link ein',
             selectDocumentText: 'oder wählen Sie ein Dokument aus:'

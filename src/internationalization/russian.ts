@@ -87,7 +87,7 @@ export default {
     },
 
     documentPage: {
-        blockChangeTip: 'Чтобы изменить блок, кликните ПКМ на линию',
+        blockChangeTip: 'Чтобы изменить блок, кликните ПКМ на линию или зажмите на телефоне',
         linkPopUp: {
             heading: 'Введите URL для ссылки',
             selectDocumentText: 'или выберите документ:'

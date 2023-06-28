@@ -87,7 +87,7 @@ export default {
     },
 
     documentPage: {
-        blockChangeTip: 'To change the block, right click on the line',
+        blockChangeTip: 'To change the block, right click on the line or hold on mobile',
         linkPopUp: {
             heading: 'Enter the URL for link',
             selectDocumentText: 'or choose a document to navigate to:'
