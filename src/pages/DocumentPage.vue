@@ -7,7 +7,7 @@
                 </router-link>
             
                 <span class="themeable font-normal text-black dark:text-white text-2xl sm:text-xl">
-                    {{ documentToEdit.title }}
+                    {{ currentDocument?.title }}
                 </span>
             </div>
 
@@ -33,6 +33,10 @@
             </div>
         </nav>
 
+        <toggle-button v-model="viewOptions.readMode">
+            Read mode
+        </toggle-button>
+
         <document-area class="flex-grow mx-auto" id="documentArea"/>
     </main-container>
 </template>
@@ -40,11 +44,12 @@
 <script lang="ts" setup>
     import MainContainer from '@/components/MainContainer.vue'
     import DocumentArea from '@/components/document-page/DocumentArea.vue'
+    import ToggleButton from '@/components/ui-kit/ToggleButton.vue'
 
-    import type { NotesDocument }  from '@/scripts/types'
-    import { onMounted, provide, ref } from 'vue'
+    import { onMounted, ref } from 'vue'
     import { useI18n } from 'vue-i18n'
     import { useDocumentsStore } from '@/stores/documents'
+    import { useCurrentDocumentStore } from '@/stores/current-document'
     import { storeToRefs } from 'pinia'
     import { useRoute, useRouter } from 'vue-router'
     import { toBlob } from 'html-to-image'
@@ -54,22 +59,16 @@
     const { t } = useI18n()
 
     const { documents } = storeToRefs(useDocumentsStore())
-    const documentToEdit = ref<NotesDocument>({
-        id: 0,
-        title: '',
-        mainColor: 'green',
-        creationDate: new Date().toString(),
-        content: []
-    })
+    const { currentDocument, viewOptions } = storeToRefs(useCurrentDocumentStore()) 
+
     const router = useRouter()
     const route = useRoute()
-    provide('documentToEdit', documentToEdit)
 
     if(documents.value.length > 0) {
         const foundDocument = documents.value.find(document => document.id == Number(route.params.documentId))
 
         if (foundDocument) {
-            documentToEdit.value = foundDocument
+            currentDocument.value = foundDocument
 
             if(route.query.downloadScreenshot == 'true') {
                 onMounted(() => {
@@ -90,8 +89,8 @@
         const documentAreaElement = document.querySelector('#documentArea') as HTMLElement
 
         toBlob(documentAreaElement).then((blob) => {
-            if (blob) {
-                saveAs(blob, 'document' + documentToEdit.value.id)
+            if(blob) {
+                saveAs(blob, 'document' + currentDocument.value?.id)
             }
         })
     }

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <component contenteditable :is="block.blockName + '-block'" @keydown="checkForNewLineQuery"
+        <component :contenteditable="!viewOptions.readMode" :is="block.blockName + '-block'" @keydown="checkForNewLineQuery"
             class="min-h-[20px] focus:outline-none" @input="queryBlockTextUpdate" :id="'block' + block.id"
             v-model:checked="block.checked" :state="block.state" spellcheck="false"
             @block-name-update-queried="(newName : string) => emit('block-name-update-queried', newName, block.id)"
@@ -14,8 +14,10 @@
 
 <script lang="ts" setup>
     import type { Block } from '@/scripts/types'
-    import { onBeforeUpdate, onMounted, toRefs, watch, type PropType } from 'vue'
+    import { nextTick, onBeforeUpdate, onMounted, toRefs, watch, type PropType } from 'vue'
     import VanillaCaret from 'vanilla-caret-js'
+    import { storeToRefs } from 'pinia'
+    import { useCurrentDocumentStore } from '@/stores/current-document'
 
     const props = defineProps({
         block: {
@@ -31,19 +33,23 @@
     const { block } = toRefs(props)
     let blockInitialText = block.value.text
 
+    const { viewOptions } = storeToRefs(useCurrentDocumentStore())
+
     let timeoutAfterTouchId = 0
     
 
     function toggleFocus() {
-        const blockElement = document.getElementById('block' + block.value.id)
+        if(!viewOptions.value.readMode) {
+            const blockElement = document.getElementById('block' + block.value.id)
 
-        if(props.focusedBlockId == block.value.id) {
-            const caret = new VanillaCaret(blockElement)
-            caret.setPos(block.value.text.length)
-            blockElement?.focus()
-        }
-        else {
-            blockElement?.blur()
+            if(props.focusedBlockId == block.value.id) {
+                const caret = new VanillaCaret(blockElement)
+                caret.setPos(block.value.text.length)
+                blockElement?.focus()
+            }
+            else {
+                blockElement?.blur()
+            }
         }
     }
 
@@ -57,7 +63,10 @@
 
     onBeforeUpdate(() => {
         blockInitialText = block.value.text
-        toggleFocus()
+        
+        nextTick(() => {
+            toggleFocus()
+        })
     })
 
     const emit = defineEmits<{

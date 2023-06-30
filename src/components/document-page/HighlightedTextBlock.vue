@@ -6,10 +6,10 @@
 
 <script lang="ts" setup>
     import mainColors from '@/scripts/main-colors'
-    import type { NotesDocument } from '@/scripts/types'
-    import { inject, type Ref } from 'vue'
+    import { storeToRefs } from 'pinia'
+    import { useCurrentDocumentStore } from '@/stores/current-document'
 
-    const documentMainColor = (inject('documentToEdit') as Ref<NotesDocument>).value.mainColor
+    const documentMainColor= storeToRefs(useCurrentDocumentStore()).currentDocument.value?.mainColor || 'black'
 </script>
 
 <style>
