@@ -51,11 +51,12 @@
 
 <script lang="ts" setup>
     import { useI18n } from 'vue-i18n'
-    import { ref, inject, type Ref, watch } from 'vue'
+    import { ref, watch } from 'vue'
     import { storeToRefs } from 'pinia'
     import { useDocumentsStore } from '@/stores/documents'
+    import { useCurrentDocumentStore } from '@/stores/current-document'
     import mainColors from '@/scripts/main-colors'
-    import type { Block, NotesDocument } from '@/scripts/types'
+    import type { Block } from '@/scripts/types'
 
     const props = defineProps<{
         visible : boolean,
@@ -67,7 +68,7 @@
 
     const { t } = useI18n()
     const { documents } = storeToRefs(useDocumentsStore())
-    const document = inject('documentToEdit') as Ref<NotesDocument>
+    const { currentDocument } = storeToRefs(useCurrentDocumentStore())
 
     const enteredUrl = ref('')
     watch(() => props.targetLink, () => {
@@ -94,12 +95,14 @@
     }
 
     function saveUrl(url : string) {
-        const documentBlocks = document.value.content
-        const targetLinkIndex = documentBlocks.findIndex(block => block.id === props.targetLink?.id)
+        if(currentDocument.value) {
+            const documentBlocks = currentDocument.value.content
+            const targetLinkIndex = documentBlocks.findIndex(block => block.id === props.targetLink?.id)
 
-        document.value.content[targetLinkIndex].state = url
+            currentDocument.value.content[targetLinkIndex].state = url
 
-        emit('window-close')
+            emit('window-close')
+        }
     }
 </script>
 
