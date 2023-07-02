@@ -10,7 +10,7 @@ Text editor has multiple languages, dark and light theme and creative landing pa
 
 Instead of raw text, you can choose different blocks (like link, check box, emoji, etc.). When you end up writing some info, you can export it to a PNG file :floppy_disk:. Documents deletion and updating are also available.
 
-:fire: New functionality - document templates and JSON export/import.
+:fire: New functionality - document templates and read mode.
 
 ## Try it out
 
