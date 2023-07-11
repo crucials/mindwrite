@@ -28,7 +28,7 @@ export const useDocumentsStore = defineStore('documents', () => {
                     blockName: 'simple-text',
                     text: '',
                     checked: false,
-                    state: 'fire'
+                    state: ''
                 }
             ]
         }
