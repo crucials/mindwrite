@@ -20,13 +20,6 @@ else {
     currentLocale = english
 }
 
-const NEW_LINE : Omit<Block, 'id'> = {
-    blockName: 'simple-text',
-    checked: false,
-    state: 'fire',
-    text: ''
-}
-
 export default<Template[]> [
     {
         name: 'firstDocument',
@@ -35,7 +28,7 @@ export default<Template[]> [
                 id: 1,
                 blockName: 'heading',
                 checked: false,
-                state: 'fire',
+                state: '',
                 text: currentLocale.templates.firstDocument.heading
             },
             
@@ -43,7 +36,7 @@ export default<Template[]> [
                 id: 2,
                 blockName: 'simple-text',
                 checked: false,
-                state: 'fire',
+                state: '',
                 text: currentLocale.templates.firstDocument.simpleText
             },
         ]
@@ -56,7 +49,7 @@ export default<Template[]> [
                 id: 1,
                 blockName: 'heading',
                 checked: false,
-                state: 'fire',
+                state: '',
                 text: currentLocale.templates.todoList.name
             },
 
@@ -64,7 +57,7 @@ export default<Template[]> [
                 id: 2,
                 blockName: 'check-box',
                 checked: false,
-                state: 'fire',
+                state: '',
                 text: currentLocale.templates.todoList.checkBoxText
             }
         ]
