@@ -2,7 +2,7 @@
 
 # mindwrite
 
-:pencil2: Advanced note-taking app, like Notion
+:pencil2: Advanced self-written text editor with block system
 
 ## Features
 
