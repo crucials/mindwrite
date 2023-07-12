@@ -9,9 +9,8 @@
         </span>
 
         <div class="absolute top-full left-0 themeable p-2 bg-white shadow-sm shadow-black/30 
-            dark:bg-neutral-900 dark:shadow-white/30 items-center gap-x-1 flex-wrap 
-            justify-center max-w-[230px] rounded-xl"
-            :class="emojiMenuOpened ? 'flex' : 'hidden'">
+            dark:bg-neutral-900 dark:shadow-white/30 items-center gap-1 flex-wrap max-w-[205px] 
+            rounded-xl" :class="emojiMenuOpened ? 'flex' : 'hidden'">
 
             <button v-for="emoji in availableEmojis" :key="emoji" class="emoji-button" 
                 @click="selectEmoji(emoji)">
@@ -44,7 +43,11 @@
     const { viewOptions } = storeToRefs(useCurrentDocumentStore())
 
     const emojiMenuOpened = ref(false)
-    const availableEmojis = [ 'fire', 'beach', 'lightning', 'rocket', 'star' ]
+    const availableEmojis = [ 
+        'fire', 'beach', 'lightning', 'rocket', 'star', 'leaf', 'sad', 'happy', 
+        'burger', 'desktop', 'mobile'
+    ]
+
     function selectEmoji(emojiName : string) {
         emojiMenuOpened.value = false
         emit('block-state-update-queried', emojiName)
