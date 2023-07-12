@@ -11,10 +11,11 @@ import EmojiBlock from '@/components/document-page/EmojiBlock.vue'
 import HighlightedTextBlock from '@/components/document-page/HighlightedTextBlock.vue'
 import StrikethroughTextBlock from '@/components/document-page/StrikethroughTextBlock.vue'
 import LinkBlock from '@/components/document-page/LinkBlock.vue'
+import SpoilerBlock from '@/components/document-page/SpoilerBlock.vue'
 
 export default [
     DropDownList, SelectList, SimpleButton, PopUpWindow, TextField,
 
     SimpleTextBlock, HeadingBlock, CheckBoxBlock, EmojiBlock, HighlightedTextBlock, 
-    StrikethroughTextBlock, LinkBlock
+    StrikethroughTextBlock, LinkBlock, SpoilerBlock
 ]

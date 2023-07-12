@@ -102,6 +102,8 @@
         if(blockToUpdate) {
             blockToUpdate.blockName = newName 
         }
+        
+        focusedBlockId.value = blockToUpdateId
     }
 
     function updateBlockState(newState : string, blockToUpdateId : number) {

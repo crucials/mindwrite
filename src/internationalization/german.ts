@@ -51,7 +51,8 @@ export default {
         emoji: 'Emoji',
         highlightedText: 'Hervorgehobener Text',
         strikethroughText: 'Durchgestrichener Text',
-        link: 'Der Link'
+        link: 'Der Link',
+        spoiler: 'Versteckte Inhalte'
     },
 
     landingPage: {

@@ -107,7 +107,12 @@
 
     function queryBlockTextUpdate(event : Event) {    
         const targetElement = event.target as HTMLElement
-        const blockText = targetElement.innerText
+        let blockText = targetElement.innerText
+
+        if(block.value.blockName === 'spoiler') {
+            blockText = (targetElement.querySelector('.hidden-text') as HTMLParagraphElement).innerText
+        }
+
         if(blockText) {
             emit('block-text-update-queried', blockText, block.value.id)
         }

@@ -34,5 +34,10 @@ export default<DropDownItem[]> [
     {
         translationKey: 'blockNames.link',
         value: 'link'
+    },
+
+    {
+        translationKey: 'blockNames.spoiler',
+        value: 'spoiler'
     }
 ]

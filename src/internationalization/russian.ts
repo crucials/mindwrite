@@ -51,7 +51,8 @@ export default {
         emoji: 'Эмодзи',
         highlightedText: 'Выделяющийся текст',
         strikethroughText: 'Зачеркнутый текст',
-        link: 'Ссылка'
+        link: 'Ссылка',
+        spoiler: 'Спойлер'
     },
 
     landingPage: {
