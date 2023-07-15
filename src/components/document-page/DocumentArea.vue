@@ -29,89 +29,21 @@
     import useLinkPopUp from '@/composables/link-pop-up'
     import { storeToRefs } from 'pinia'
     import { useCurrentDocumentStore } from '@/stores/current-document'
+    import useDocumentArea from '@/composables/document-area'
 
 
     type Position = { x : number, y : number }
 
     const { currentDocument, viewOptions } = storeToRefs(useCurrentDocumentStore())
-    const focusedBlockId = ref(1)
-
-    const { linkPopUpVisible } = useLinkPopUp()
-    const targetLinkBlock = ref<Block>()
+    
+    const { 
+        focusedBlockId, focusOnNextLine, focusOnPreviousLine, createNewLine,
+        deleteLine, updateBlockName, updateBlockText, updateBlockState, 
+        changeBlock, linkPopUpVisible, targetLinkBlock, currentEditingBlock
+    } = useDocumentArea(currentDocument)
 
     const blockDropDownListOpened = ref(false)
     const blockDropDownPosition = ref<Position>({ x: 0, y: 0 })
-    const currentEditingBlock = ref<Block>()
-    
-    function createNewLine(currentBlock : Block) {
-        if(currentDocument.value) {
-            const documentContent = currentDocument.value.content
-            const newBlock : Block = {
-                id: documentContent.length + 1,
-                blockName: 'simple-text',
-                text: '',
-                checked: false,
-                state: ''
-            }
-
-            documentContent.splice(documentContent.indexOf(currentBlock) + 1, 0, newBlock)
-            focusedBlockId.value = newBlock.id
-        }
-    }
-
-    function deleteLine(currentBlock : Block) {
-        if(currentDocument.value) {
-            const documentContent = currentDocument.value.content
-            
-            if(currentBlock.id > 1) {
-                currentDocument.value.content = documentContent.filter(block => block.id != currentBlock.id)
-                focusedBlockId.value = currentBlock.id - 1
-            }
-        }
-    }
-
-    function focusOnNextLine(currentBlock : Block) {
-        if(currentDocument.value) {
-            const content = currentDocument.value.content
-            const currentBlockIndex = content.indexOf(currentBlock)
-
-            if(currentBlockIndex < content.length - 1) {
-                focusedBlockId.value = content[currentBlockIndex + 1].id
-            }
-        }
-    }
-    function focusOnPreviousLine(currentBlock : Block) {
-        if(currentDocument.value) {
-            const content = currentDocument.value.content
-            const currentBlockIndex = content.indexOf(currentBlock)
-
-            if(currentBlockIndex > 0) {
-                focusedBlockId.value = content[currentBlockIndex - 1].id
-            }
-        }
-    }
-
-    function updateBlockText(newText : string, blockToUpdateId : number) {
-        const blockToUpdate = currentDocument.value?.content.find(block => block.id == blockToUpdateId)
-        if(blockToUpdate) {
-            blockToUpdate.text = newText
-        }
-    }
-    function updateBlockName(newName : string, blockToUpdateId : number) {
-        const blockToUpdate = currentDocument.value?.content.find(block => block.id == blockToUpdateId)
-        if(blockToUpdate) {
-            blockToUpdate.blockName = newName 
-        }
-        
-        focusedBlockId.value = blockToUpdateId
-    }
-
-    function updateBlockState(newState : string, blockToUpdateId : number) {
-        const blockToUpdate = currentDocument.value?.content.find(block => block.id == blockToUpdateId)
-        if(blockToUpdate) {
-            blockToUpdate.state = newState
-        }
-    }
 
     function showDropDownAtCursorPosition(event : MouseEvent, targetBlock : Block) {
         event.preventDefault()    
@@ -135,21 +67,6 @@
     function closeDropDown(event : Event) {
         if(!(event.target as HTMLElement).classList.contains('drop-down-list')) {
             blockDropDownListOpened.value = false
-        }
-    }
-
-    function changeBlock(newBlockNameItem : DropDownItem) {
-        if(currentEditingBlock.value) {
-            if(newBlockNameItem.value === 'emoji') {
-                currentEditingBlock.value.state = 'fire'
-            }
-            else if(newBlockNameItem.value === 'link') {
-                currentEditingBlock.value.state = ''
-                targetLinkBlock.value = currentEditingBlock.value
-                linkPopUpVisible.value = true
-            }
-
-            currentEditingBlock.value.blockName = newBlockNameItem.value
         }
     }
 </script>
