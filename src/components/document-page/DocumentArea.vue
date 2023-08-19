@@ -46,22 +46,24 @@
     const blockDropDownPosition = ref<Position>({ x: 0, y: 0 })
 
     function showDropDownAtCursorPosition(event : MouseEvent, targetBlock : Block) {
-        event.preventDefault()    
-        currentEditingBlock.value = targetBlock   
-        
-        showDropDown({ x: event.x, y: event.y - 63 })
+        if(!viewOptions.value.readMode) {
+            event.preventDefault()
+            currentEditingBlock.value = targetBlock
+            
+            showDropDown({ x: event.x, y: event.y - 63 }, targetBlock)
+        }
     }
 
     function showDropDownAtTouchPosition(touchEvent : TouchEvent, targetBlock : Block) {
-        currentEditingBlock.value = targetBlock
-        showDropDown({ x: touchEvent.touches[0].clientX, y: touchEvent.touches[0].clientY - 140 })
+        if(!viewOptions.value.readMode) {
+            currentEditingBlock.value = targetBlock
+            showDropDown({ x: touchEvent.touches[0].clientX, y: touchEvent.touches[0].clientY - 140 }, targetBlock)
+        }
     }
  
-    function showDropDown(position : Position) {
-        if(!viewOptions.value.readMode) {
-            blockDropDownPosition.value = position
-            blockDropDownListOpened.value = true
-        }
+    function showDropDown(position : Position, targetBlock : Block) {
+        blockDropDownPosition.value = position
+        blockDropDownListOpened.value = true
     }
 
     function closeDropDown(event : Event) {

@@ -11,6 +11,8 @@
 <script lang="ts" setup>
     import { ref } from 'vue'
     import useBlockMutationObserver from '@/composables/block-mutation-observer'
+    import { useCurrentDocumentStore } from '@/stores/current-document'
+    import { storeToRefs } from 'pinia'
 
     const props = defineProps<{
         state : string
@@ -21,9 +23,18 @@
 
     const linkBlockContainer = ref<HTMLDivElement>()
     useBlockMutationObserver(linkBlockContainer, emit)
+
+    const { viewOptions } = storeToRefs(useCurrentDocumentStore())
     
-    function navigateToLink() {
-        window.location.href = props.state
+    function navigateToLink(event : MouseEvent) {
+        if(!viewOptions.value.readMode) {
+            if(event.ctrlKey) {
+                window.open(props.state)
+            }
+            else {
+                window.location.href = props.state
+            }
+        }
     }
 </script>
 
