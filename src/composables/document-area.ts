@@ -58,7 +58,7 @@ export default function useDocumentArea(currentDocument : Ref<NotesDocument | un
     }
     function changeBlock(newBlockNameItem : DropDownItem) {
         if(currentEditingBlock.value) {
-            if(!newBlockNameItem.blockOption && newBlockNameItem.value === 'open-in-new-tab') {
+            if(newBlockNameItem.value === 'open-in-new-tab') {
                 window.open(currentEditingBlock.value.state)
                 return
             }
