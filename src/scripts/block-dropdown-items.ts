@@ -3,49 +3,41 @@ import type { DropDownItem } from './types'
 export default<DropDownItem[]> [
     {
         translationKey: 'blockNames.simpleText',
-        value: 'simple-text',
-        blockOption: true
+        value: 'simple-text'
     },
 
     {
         translationKey: 'blockNames.heading',
-        value: 'heading',
-        blockOption: true
+        value: 'heading'
     },
 
     {
         translationKey: 'blockNames.checkBox',
-        value: 'check-box',
-        blockOption: true
+        value: 'check-box'
     },
 
     {
         translationKey: 'blockNames.emoji',
-        value: 'emoji',
-        blockOption: true
+        value: 'emoji'
     },
 
     {
         translationKey: 'blockNames.highlightedText',
-        value: 'highlighted-text',
-        blockOption: true
+        value: 'highlighted-text'
     },
 
     {
         translationKey: 'blockNames.strikethroughText',
-        value: 'strikethrough-text',
-        blockOption: true
+        value: 'strikethrough-text'
     },
 
     {
         translationKey: 'blockNames.link',
-        value: 'link',
-        blockOption: true
+        value: 'link'
     },
 
     {
         translationKey: 'blockNames.spoiler',
-        value: 'spoiler',
-        blockOption: true
+        value: 'spoiler'
     }
 ]

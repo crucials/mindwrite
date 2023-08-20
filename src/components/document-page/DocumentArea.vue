@@ -65,7 +65,6 @@
     function showDropDown(position : Position, targetBlock : Block) {
         if(targetBlock.blockName === 'link') {
             addDropDownItem({
-                blockOption: false,
                 translationKey: 'documentPage.openInNewTabItem',
                 value: 'open-in-new-tab'
             })
