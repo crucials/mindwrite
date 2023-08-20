@@ -92,7 +92,9 @@ export default {
         linkPopUp: {
             heading: 'Geben Sie die URL für den Link ein',
             selectDocumentText: 'oder wählen Sie ein Dokument aus:'
-        }
+        },
+
+        openInNewTabItem: 'in neuem Tab öffnen'
     },
 
     templates: {

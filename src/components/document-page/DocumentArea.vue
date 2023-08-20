@@ -10,7 +10,7 @@
             @block-name-update-queried="updateBlockName" @block-state-update-queried="updateBlockState"/>
 
         <div class="absolute w-40 min-w-2" :style="`left: ${blockDropDownPosition.x}px; top: ${blockDropDownPosition.y}px`">
-            <drop-down-list :opened="blockDropDownListOpened" :items="blockDropdownItems" :doOnClick="changeBlock"
+            <drop-down-list :opened="blockDropDownListOpened" :items="dropDownItems" :doOnClick="changeBlock"
                 :class="{ 'pointer-events-none': !blockDropDownListOpened }"/>
         </div>
 
@@ -44,6 +44,7 @@
 
     const blockDropDownListOpened = ref(false)
     const blockDropDownPosition = ref<Position>({ x: 0, y: 0 })
+    const dropDownItems = ref<DropDownItem[]>(blockDropdownItems)
 
     function showDropDownAtCursorPosition(event : MouseEvent, targetBlock : Block) {
         if(!viewOptions.value.readMode) {
@@ -62,13 +63,41 @@
     }
  
     function showDropDown(position : Position, targetBlock : Block) {
+        if(targetBlock.blockName === 'link') {
+            addDropDownItem({
+                blockOption: false,
+                translationKey: 'documentPage.openInNewTabItem',
+                value: 'open-in-new-tab'
+            })
+        }
+        else {
+            removeDropDownItem('open-in-new-tab')
+        }
+
         blockDropDownPosition.value = position
         blockDropDownListOpened.value = true
     }
 
     function closeDropDown(event : Event) {
+        removeDropDownItem('open-in-new-tab')
         if(!(event.target as HTMLElement).classList.contains('drop-down-list')) {
             blockDropDownListOpened.value = false
+        }
+    }
+
+    function addDropDownItem(dropDownItem : DropDownItem) {
+        const foundItem = dropDownItems.value.find(item => item.value === dropDownItem.value)
+
+        if(!foundItem) {
+            dropDownItems.value.push(dropDownItem)
+        }
+    }
+
+    function removeDropDownItem(dropDownItemValue : string) {
+        const dropDownItemIndex = dropDownItems.value.findIndex(item => item.value === dropDownItemValue)
+
+        if(dropDownItemIndex > 0) {   
+            console.log(dropDownItems.value.splice(dropDownItemIndex, 1))
         }
     }
 </script>

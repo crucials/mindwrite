@@ -92,7 +92,9 @@ export default {
         linkPopUp: {
             heading: 'Enter the URL for link',
             selectDocumentText: 'or choose a document to navigate to:'
-        }
+        },
+
+        openInNewTabItem: 'Open link in new tab'
     },
 
     templates: {

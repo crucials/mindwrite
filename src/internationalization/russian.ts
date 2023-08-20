@@ -92,7 +92,9 @@ export default {
         linkPopUp: {
             heading: 'Введите URL для ссылки',
             selectDocumentText: 'или выберите документ:'
-        }
+        },
+        
+        openInNewTabItem: 'Открыть ссылку в новой вкладке'
     },
 
     templates: {

@@ -2,6 +2,7 @@
 export type DropDownItem = {
     translationKey : string,
     value : string,
+    blockOption : boolean
 }
 
 
