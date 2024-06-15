@@ -32,13 +32,12 @@
 
 <style scoped>
     .drop-down-list {
-        @apply transition-all duration-300 min-w-2 px-5 py-3 absolute -top-3 left-0 opacity-0 hover:cursor-default
-            z-10 pointer-events-none lg:min-w-1 ;
-        background: linear-gradient(180deg, rgba(248, 247, 247, 0.15) 10%, #F8F7F7 100%);
+        @apply transition-all duration-300 min-w-2 px-5 py-3 absolute top-1/2 left-0 opacity-0 hover:cursor-default
+            z-10 pointer-events-none lg:min-w-1 bg-neutral-100 rounded-lg;
     }
 
     .dark .drop-down-list {
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 10%, #000000 100%);
+        @apply bg-black;
     }
 
     .drop-down-item {
@@ -48,7 +47,7 @@
     }
 
     .drop-down-list-opened {
-        @apply opacity-100 top-full pointer-events-auto;
+        @apply opacity-100 top-[100%] pointer-events-auto;
     }
 
     .drop-down-list-opened .drop-down-item {
